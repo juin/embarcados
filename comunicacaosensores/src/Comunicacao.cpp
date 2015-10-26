@@ -23,7 +23,7 @@ Comunicacao::Comunicacao(char* porta){
 int Comunicacao::iniciar(){
 	int resultado = EXIT_SUCCESS;
 #if _WIN32 || _WIN64
-	//MANDA A STRING DA PORTA, diz q faz leitura e escrita e só abre se já existir
+	//MANDA A STRING DA PORTA, diz q faz leitura e escrita e sÃ³ abre se jÃ¡ existir
 		hPorta = CreateFile(porta, GENERIC_READ | GENERIC_WRITE,
 				0, NULL, OPEN_EXISTING, 0, NULL);
 		if (hPorta == INVALID_HANDLE_VALUE){
@@ -35,11 +35,11 @@ int Comunicacao::iniciar(){
 			memset(&dcb, 0, sizeof(dcb));
 			dcb.DCBlength = sizeof(dcb);
 			dcb.BaudRate = CBR_9600;
-			dcb.Parity = NOPARITY; //NÃO VAI TRATAR DE PARIDADE
+			dcb.Parity = NOPARITY; //Nï¿½O VAI TRATAR DE PARIDADE
 			dcb.StopBits = ONESTOPBIT;
 			dcb.ByteSize = 8;  //cada byte vai ter tantos bits
 
-			//até aqui só fez a leitura, agora precisa injetar na porta
+			//atï¿½ aqui sï¿½ fez a leitura, agora precisa injetar na porta
 			if (!SetCommState(hPorta, &dcb)){
 				resultado = GetLastError();
 			}
