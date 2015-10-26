@@ -23,23 +23,31 @@ Comunicacao::Comunicacao(char* porta){
 int Comunicacao::iniciar(){
 	int resultado = EXIT_SUCCESS;
 #if _WIN32 || _WIN64
-	hPorta = CreateFile(porta, GENERIC_READ, GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, NULL);
-	if (hPorta == INVALID_HANDLE_VALUE){
-		resultado = GetLastError();
-	}else{
-		//configuraÃ§Ã£o da porta
-		DCB dcb;
-		memset(&dcb, 0, sizeof(dcb));
-		dcb.DCBlength = sizeof(dcb);
-		dcb.BaudRate = CBR_9600;
-		dcb.Parity = NOPARITY;
-		dcb.StopBits = ONESTOPBIT;
-		dcb.ByteSize = 8;
+	//MANDA A STRING DA PORTA, diz q faz leitura e escrita e só abre se já existir
+		hPorta = CreateFile(porta, GENERIC_READ | GENERIC_WRITE,
+				0, NULL, OPEN_EXISTING, 0, NULL);
+		if (hPorta == INVALID_HANDLE_VALUE){
+			resultado = GetLastError();//retorna o erro do windows
+		}else{
+			//mesma leitura do arduino no delay
+			DCB dcb;
+			//zerar todos os bytes da dcb, porta serial
+			memset(&dcb, 0, sizeof(dcb));
+			dcb.DCBlength = sizeof(dcb);
+			dcb.BaudRate = CBR_9600;
+			dcb.Parity = NOPARITY; //NÃO VAI TRATAR DE PARIDADE
+			dcb.StopBits = ONESTOPBIT;
+			dcb.ByteSize = 8;  //cada byte vai ter tantos bits
 
-		if(!SetCommState(hPorta, &dcb)){
-			resultado = GetLastError();
+			//até aqui só fez a leitura, agora precisa injetar na porta
+			if (!SetCommState(hPorta, &dcb)){
+				resultado = GetLastError();
+			}
+
+
+
+
 		}
-	}
 #endif
 
 #ifdef __linux__
@@ -79,7 +87,7 @@ int Comunicacao::ler(char* buffer, long unsigned int bytesParaLer){
 int Comunicacao::finalizar(){
 
 #if _WIN32 || _WIN64
-	ClosedHandle(hPorta);
+		CloseHandle(hPorta);
 #endif
 
 #ifdef __linux__
