@@ -2,6 +2,7 @@
 JavaApp/.settings/
 JavaApp/bin/
 JavaApp/comunicacaosensores.so
+JavaApp/comunicacaosensores.dll
 JavaApp/lib/
 JavaApp/.classpath
 JavaApp/.project
