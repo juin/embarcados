@@ -1,6 +1,20 @@
-#Arquivos do projeto Eclipse (linux,windows)
-.cproject
-.project
+#Arquivos/Diretorios javaApp
+JavaApp/.settings/
+JavaApp/bin/
+JavaApp/comunicacaosensores.so
+JavaApp/lib/
+JavaApp/.classpath
+JavaApp/.project
+
+#Arquivos/Diretorios C++
+comunicacaosensores/.settings/
+comunicacaosensores/Debug/
+comunicacaosensores/Release/
+comunicacaosensores/.project
+comunicacaosensores/.cproject
+
+#Arquivos/Diretorios Arduino
+
 
 # Compiled Object files
 *.slo
