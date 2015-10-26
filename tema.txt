@@ -1,1 +1,2 @@
 O tema de trabalho é: DETECÇÃO DE QUEDA
+ok, funcionando
