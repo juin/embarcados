@@ -37,8 +37,8 @@ void loop() {
   
   enviarEixos();
 
-  Serial.print("AI");
+  Serial.print("A");
   Serial.print(bmp.readAltitude());
-  Serial.println(" AF");
+  Serial.print("AT");
   delay(50);
 }
