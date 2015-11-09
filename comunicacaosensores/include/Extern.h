@@ -18,6 +18,7 @@ int ler();
 int getAcelX();
 int getAcelY();
 int getAcelZ();
+int getAltitude();
 int finalizar();
 
 #ifdef __cpluplus
