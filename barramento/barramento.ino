@@ -42,7 +42,7 @@ void enviarAltitude(){
 
   Serial.write("A");
   Serial.write((uint8_t*)&buff, tam);
-  Serial.write("AT");
+  Serial.write("T");
 }
 
 void loop() {

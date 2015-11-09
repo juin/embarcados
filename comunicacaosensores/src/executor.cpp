@@ -31,8 +31,9 @@ int main(int argc, char **argv) {
 	//Comunicacao com = Comunicacao("COM6");
 	//iniciei a comunicacao testando para sucesso
 	if (com.iniciar() == EXIT_SUCCESS) {
-		char ci, cf;
+		char ci, cf,ai,at;
 		Eixo eixos;
+		float altitude;
 		//enquanto estiver executando
 		while (true) {
 			//realizar a leitura do caracter "I" (Inicial)
@@ -50,6 +51,21 @@ int main(int argc, char **argv) {
 						cout << "X= " << eixos.acelX << endl;
 						cout << "Y= " << eixos.acelY << endl;
 						cout << "Z= " << eixos.acelZ << endl;
+					}
+				}
+			}
+
+			resultado = com.ler((char*)&ai, sizeof(ai));
+			if ((resultado == EXIT_SUCCESS) && (ai == 'A')) {
+				//se a leitura de 'A' correr bem
+				//ler a altitude
+				resultado = com.ler((char*)&altitude, sizeof(altitude));
+				if (resultado == EXIT_SUCCESS) {
+					//se a leitura da altitude correr bem
+					resultado = com.ler((char*)&at, sizeof(at));
+
+					if (resultado == EXIT_SUCCESS && (at == 'T')) {
+						cout << "A= " << altitude << endl;
 					}
 				}
 			}
