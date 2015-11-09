@@ -1,7 +1,9 @@
 #include <Wire.h>
 #include "ADXL345.h"
+#include "Adafruit_BMP085.h"
 
 ADXL345 acel = ADXL345();
+Adafruit_BMP085 bmp;
 
 struct Eixo{
   int acelX, acelY, acelZ;
@@ -13,6 +15,10 @@ Eixo eixos;
 void setup() {
   Serial.begin(9600);
   acel.powerOn();
+  if (!bmp.begin()) {
+    Serial.println("Não foi possível encontrar um sensor BMP085 válido.Por favor, verifique.");
+    while (1) {}
+  }
 }
 
 void enviarEixos(){
@@ -30,5 +36,12 @@ void loop() {
   acel.readAccel(&eixos.acelX,&eixos.acelY,&eixos.acelZ);
   
   enviarEixos();
-  delay(50);
+
+  // Calculate altitude assuming 'standard' barometric
+  // pressure of 1013.25 millibar = 101325 Pascal
+  Serial.println("");
+  Serial.print("Altitude = ");
+  Serial.print(bmp.readAltitude());
+  Serial.println(" metros");
+  delay(500);
 }
