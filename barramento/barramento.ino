@@ -37,11 +37,8 @@ void loop() {
   
   enviarEixos();
 
-  // Calculate altitude assuming 'standard' barometric
-  // pressure of 1013.25 millibar = 101325 Pascal
-  Serial.println("");
-  Serial.print("Altitude = ");
+  Serial.print("AI");
   Serial.print(bmp.readAltitude());
-  Serial.println(" metros");
-  delay(500);
+  Serial.println(" AF");
+  delay(50);
 }
