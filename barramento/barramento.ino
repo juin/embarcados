@@ -11,6 +11,7 @@ struct Eixo{
 };
 
 Eixo eixos;
+float altitude;
 
 void setup() {
   Serial.begin(9600);
@@ -32,13 +33,25 @@ void enviarEixos(){
   Serial.write('F');
 }
 
+void enviarAltitude(){
+  
+  int tam = sizeof(altitude);
+  char buff[tam];
+
+  memcpy(&buff, &altitude, tam);
+
+  Serial.write("A");
+  Serial.write((uint8_t*)&buff, tam);
+  Serial.write("AT");
+}
+
 void loop() {
   acel.readAccel(&eixos.acelX,&eixos.acelY,&eixos.acelZ);
+
+  altitude = bmp.readAltitude();
   
   enviarEixos();
+  enviarAltitude();
 
-  Serial.print("A");
-  Serial.print(bmp.readAltitude());
-  Serial.print("AT");
   delay(50);
 }
