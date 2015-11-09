@@ -16,6 +16,7 @@ struct Eixo {
 };
 
 Eixo eixos;
+float altitude;
 
 Comunicacao com = NULL;
 
@@ -57,6 +58,10 @@ int getAcelY(){
 int getAcelZ(){
 	return eixos.acelZ;
 };
+
+int getAltitude(){
+	return altitude;
+}
 int finalizar(){
 	return com.finalizar();
 };
