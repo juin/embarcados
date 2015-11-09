@@ -20,7 +20,15 @@ struct Eixo {
 int main(int argc, char **argv) {
 
 	//criar uma instancia da classe de comunicação
-	Comunicacao com = Comunicacao("/dev/ttyACM0");
+	#ifdef __linux__
+		Comunicacao com = Comunicacao("/dev/ttyACM0");
+	#endif
+	#ifdef _WIN32 || _WIN64
+		Comunicacao com = Comunicacao("COM6");
+	#endif
+
+	//Comunicacao com = Comunicacao("/dev/ttyACM0");
+	//Comunicacao com = Comunicacao("COM6");
 	//iniciei a comunicacao testando para sucesso
 	if (com.iniciar() == EXIT_SUCCESS) {
 		char ci, cf;
