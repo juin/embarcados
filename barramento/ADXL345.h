@@ -87,12 +87,23 @@
 #define ADXL345_INT_WATERMARK_BIT  0x01
 #define ADXL345_INT_OVERRUNY_BIT   0x00
 
+#define ADXL345_DATA_READY 0x07
+#define ADXL345_SINGLE_TAP 0x06
+#define ADXL345_DOUBLE_TAP 0x05
+#define ADXL345_ACTIVITY  0x04
+#define ADXL345_INACTIVITY 0x03
+#define ADXL345_FREE_FALL 0x02
+#define ADXL345_WATERMARK 0x01
+#define ADXL345_OVERRUNY  0x00
+
 #define ADXL345_OK    1 // no error
 #define ADXL345_ERROR 0 // indicates error is predent
 
 #define ADXL345_NO_ERROR   0 // initial state
 #define ADXL345_READ_ERROR 1 // problem reading accel
 #define ADXL345_BAD_ARG    2 // bad method argument
+
+
 
 class ADXL345
 {
@@ -172,6 +183,8 @@ public:
   void setRate(double rate);
   void set_bw(byte bw_code);
   byte get_bw_code();  
+
+  bool triggered(byte interrupts, int mask);
 
   byte getInterruptSource();
   bool getInterruptSource(byte interruptBit);

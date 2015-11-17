@@ -534,6 +534,12 @@ byte ADXL345::get_bw_code(){
   return bw_code;
 }
 
+//Used to check if action was triggered in interrupts
+//Example triggered(interrupts, ADXL345_SINGLE_TAP);
+bool ADXL345::triggered(byte interrupts, int mask){
+    return ((interrupts >> mask) & 1);
+}
+
 byte ADXL345::getInterruptSource() {
   byte _b;
   readFrom(ADXL345_INT_SOURCE, 1, &_b);
