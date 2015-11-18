@@ -1,16 +1,24 @@
 package br.edu.ifba.embarcados.javaapp;
 
+import com.sun.jna.Native;
+import com.sun.jna.Platform;
+
 import br.edu.ifba.embarcados.javaapp.asincexec.AsincExec;
+import br.edu.ifba.embarcados.javaapp.conector.IComunicacaoSensores;
 
 
 public class Executor {
 
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
-		//AsincExec asinc = 
-		//		new AsincExec("/dev/ttyACM0");
-		AsincExec asinc = 
-				new AsincExec("COM6");
+		AsincExec asinc = null;
+		if (Platform.isWindows()){
+			asinc = new AsincExec("COM6");
+		}else if (Platform.isLinux()){
+			 asinc = new AsincExec("/dev/ttyACM0");
+		}
+		
+		
 		//vamos colocar ao menos um escutador
 		//tem que colocar o listener dentro do asinc para ele usar
 		ListenerAcelerometro listener = 

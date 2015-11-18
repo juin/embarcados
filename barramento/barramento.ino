@@ -21,7 +21,7 @@ void setup() {
 
   //Limite da queda e duração
    acel.setFreeFallThreshold(7);// //(5 - 9)
-   acel.setFreeFallDuration(5); // //(20 - 70) 
+   acel.setFreeFallDuration(10); // //(20 - 70) 
 }
 
 
@@ -54,9 +54,10 @@ void loop() {
   //Leitura interrompe fonte e procurar ações desencadeadas
   byte interrupts = acel.getInterruptSource();
   if(acel.triggered(interrupts, ADXL345_FREE_FALL)){
+    Serial.println("Queda Detectada");
     Serial.write('Q');
   }
 
 Serial.println("");
-  delay(500);
+  delay(50);
 }

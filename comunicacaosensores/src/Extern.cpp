@@ -10,14 +10,8 @@
 #include "Extern.h"
 #include "comunicacao.h"
 
-//struct Eixo {
-//	short acelX, acelY, acelZ;
-	//int giroX, giroY, giroZ;
-//};
-
-//Eixo eixos;
 float altitude;
-char queda;
+char aq;
 
 Comunicacao com = NULL;
 
@@ -29,7 +23,7 @@ int iniciar(char* porta) {
 int ler() {
 	char ai, at;
 
-	//realizar a leitura do caracter "I" (Inicial)
+	//realizar a leitura do caracter "A" (Inicial)
 	int resultado;
 	resultado = com.ler((char*) &ai, sizeof(ai));
 	if ((resultado == EXIT_SUCCESS) && (ai == 'A')) {
@@ -45,9 +39,9 @@ int ler() {
 		}
 	}
 
-	resultado = com.ler((char*) &queda, sizeof(queda));
+	resultado = com.ler((char*) &aq, sizeof(aq));
 	//se a leitura de 'Q' correr bem queda detectada
-	if ((resultado == EXIT_SUCCESS) && (queda == 'Q')) {
+	if ((resultado == EXIT_SUCCESS) && (aq == 'Q')) {
 		resultado = EXIT_SUCCESS;
 	}
 
@@ -60,7 +54,7 @@ float getAltitude(){
 };
 
 char getQueda(){
-	return queda;
+	return aq;
 };
 
 int finalizar(){

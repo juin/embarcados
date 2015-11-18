@@ -12,11 +12,6 @@
 
 using namespace std;
 
-//struct Eixo {
-//	short acelX, acelY, acelZ;
-	//int giroX, giroY, giroZ;
-//};
-
 int main(int argc, char **argv) {
 
 	//criar uma instancia da classe de comunicação
@@ -56,7 +51,7 @@ int main(int argc, char **argv) {
 			if ((resultado == EXIT_SUCCESS) && (aq == 'Q')) {
 				cout << "Q" << endl;
 			}
-			Sleep(500);
+			Sleep(50);//estava 500
 		}
 	};
 

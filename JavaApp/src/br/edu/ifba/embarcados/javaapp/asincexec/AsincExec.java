@@ -37,12 +37,9 @@ public class AsincExec implements Runnable {
 			while (continuar){
 				conector.ler();
 				
-				//notificar(conector.getAcelX(),
-				//		conector.getAcelY(),
-				//		conector.getAcelZ());
+				
 				notificar(conector.getAltitude(), conector.getQueda());
-						//		conector.getAcelY(),
-						//		conector.getAcelZ());
+						
 				
 				try {
 					Thread.sleep(100);
