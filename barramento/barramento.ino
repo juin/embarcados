@@ -6,6 +6,7 @@
 ADXL345 acel = ADXL345();
 Adafruit_BMP085 bmp;
 float altitude;
+char queda = 'N';
 
 void setup() {
   Serial.begin(9600);
@@ -47,21 +48,20 @@ void checkSetup()
 }
 
 void loop() {
+  
+  queda = 'N';
+  Serial.write(queda);
+  
   altitude = bmp.readAltitude();
- // checkSetup();
- 
-  enviarAltitude();
+  // checkSetup();
   
-  
- // Leitura interrompe fonte e procurar ações desencadeadas
+  //Leitura interrompe fonte e procurar ações desencadeadas
   byte interrupts = acel.getInterruptSource();
   if(acel.triggered(interrupts, ADXL345_FREE_FALL)){
-    Serial.println("FreeFall - Queda detectada");
-    // adicionar código aqui para fazer algo quando a queda livre for detectada
-    Serial.write("Q");
-    
+    queda = 'Q';
+    Serial.write(queda);
+    enviarAltitude();   
   }
- 
 
   delay(50);
 }
