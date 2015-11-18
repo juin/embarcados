@@ -31,7 +31,7 @@ int main(int argc, char **argv) {
 	//Comunicacao com = Comunicacao("COM6");
 	//iniciei a comunicacao testando para sucesso
 	if (com.iniciar() == EXIT_SUCCESS) {
-		char ci, cf,ai,at;
+		char ci, cf,ai,at,aq, deteccaoQueda;
 		Eixo eixos;
 		float altitude;
 		//enquanto estiver executando
@@ -69,7 +69,21 @@ int main(int argc, char **argv) {
 					}
 				}
 			}
-			Sleep(100);
+			resultado = com.ler((char*)&aq, sizeof(aq));
+						if ((resultado == EXIT_SUCCESS) && (aq == 'Q')) {
+							//se a leitura de 'Q' correr bem
+							//queda detectada
+							resultado = com.ler((char*)&altitude, sizeof(altitude));
+							if (resultado == EXIT_SUCCESS) {
+								//se a leitura da altitude correr bem
+								resultado = com.ler((char*)&at, sizeof(at));
+
+								if (resultado == EXIT_SUCCESS && (at == 'Q')) {
+									cout << "Q= " << deteccaoQueda << endl;
+								}
+							}
+			}
+			Sleep(500);
 		}
 	};
 
