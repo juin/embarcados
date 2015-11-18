@@ -56,7 +56,7 @@ int main(int argc, char **argv) {
 			if ((resultado == EXIT_SUCCESS) && (aq == 'Q')) {
 				cout << "Q" << endl;
 			}
-			Sleep(50);
+			Sleep(500);
 		}
 	};
 

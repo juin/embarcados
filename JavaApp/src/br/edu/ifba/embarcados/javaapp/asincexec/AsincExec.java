@@ -54,10 +54,11 @@ public class AsincExec implements Runnable {
 		
 	}
 	
-	private void notificar(int x, int y, int z){
+	private void notificar(float altitude, char queda){
 		//notificar todos de vez
 		for (IListenerAcelerometro listener: listeners) {
-			//listener.notificarMovimento(x, y, z);
+			listener.notificarAltitude(altitude);
+			listener.notificarQueda(queda);			
 		}
 		
 	}

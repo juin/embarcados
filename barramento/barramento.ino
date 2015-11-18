@@ -57,5 +57,6 @@ void loop() {
     Serial.write('Q');
   }
 
-  delay(50);
+Serial.println("");
+  delay(500);
 }

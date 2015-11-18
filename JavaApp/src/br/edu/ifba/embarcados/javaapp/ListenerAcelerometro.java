@@ -4,22 +4,20 @@ import br.edu.ifba.embarcados.javaapp.asincexec.IListenerAcelerometro;
 
 public class ListenerAcelerometro implements IListenerAcelerometro{
 
-	
-	//public void notificarMovimento(int x, int y, int z) {
-		// TODO Auto-generated method stub
-	//	System.out.println("X =" + x );
-	//	System.out.println("Y=" + y);
-	//	System.out.println("Z =" + z );
-		
-	//}
-
-	
 	public void notificarAltitude(float altitude){
-		// TODO Auto-generated method stub
-		
+		System.out.println("Altitude = "+ altitude);
 	}
+	
+	//Se houver queda, retorna verdadeiro
 	public boolean notificarQueda(char queda){
-		return true;
+		
+		boolean resultado = false;
+		
+		if(queda == 'Q'){
+			resultado = true;
+		}
+		
+		return resultado;
 	}
 
 }
