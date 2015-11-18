@@ -37,9 +37,9 @@ public class AsincExec implements Runnable {
 			while (continuar){
 				conector.ler();
 				
-				notificar(conector.getAcelX(),
-						conector.getAcelY(),
-						conector.getAcelZ());
+				//notificar(conector.getAcelX(),
+				//		conector.getAcelY(),
+				//		conector.getAcelZ());
 				
 				try {
 					Thread.sleep(100);
@@ -57,7 +57,7 @@ public class AsincExec implements Runnable {
 	private void notificar(int x, int y, int z){
 		//notificar todos de vez
 		for (IListenerAcelerometro listener: listeners) {
-			listener.notificarMovimento(x, y, z);
+			//listener.notificarMovimento(x, y, z);
 		}
 		
 	}
