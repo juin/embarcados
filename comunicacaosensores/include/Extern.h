@@ -15,9 +15,9 @@ extern "C" {
 int iniciar(char* porta);
 int ler();
 
-int getAcelX();
-int getAcelY();
-int getAcelZ();
+//int getAcelX();
+//int getAcelY();
+//int getAcelZ();
 int getAltitude();
 int finalizar();
 

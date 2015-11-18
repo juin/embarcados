@@ -38,22 +38,22 @@ int main(int argc, char **argv) {
 		while (true) {
 			//realizar a leitura do caracter "I" (Inicial)
 			int resultado;
-			resultado = com.ler((char*)&ci, sizeof(ci));
-			if ((resultado == EXIT_SUCCESS) && (ci == 'I')) {
+			//resultado = com.ler((char*)&ci, sizeof(ci));
+			//if ((resultado == EXIT_SUCCESS) && (ci == 'I')) {
 				//se a leitura de 'I' correr bem
 				//ler os eixos
-				resultado = com.ler((char*)&eixos, sizeof(eixos));
-				if (resultado == EXIT_SUCCESS) {
+			//	resultado = com.ler((char*)&eixos, sizeof(eixos));
+			//	if (resultado == EXIT_SUCCESS) {
 					//se a leitura dos eixos correr bem
 
-					resultado = com.ler((char*) &cf, sizeof(cf));
-					if (resultado == EXIT_SUCCESS && (cf == 'F')) {
-						cout << "X= " << eixos.acelX << endl;
-						cout << "Y= " << eixos.acelY << endl;
-						cout << "Z= " << eixos.acelZ << endl;
-					}
-				}
-			}
+			//		resultado = com.ler((char*) &cf, sizeof(cf));
+			//		if (resultado == EXIT_SUCCESS && (cf == 'F')) {
+			//			cout << "X= " << eixos.acelX << endl;
+			//			cout << "Y= " << eixos.acelY << endl;
+			//			cout << "Z= " << eixos.acelZ << endl;
+			//		}
+			//	}
+			//}
 
 			resultado = com.ler((char*)&ai, sizeof(ai));
 			if ((resultado == EXIT_SUCCESS) && (ai == 'A')) {
@@ -70,20 +70,20 @@ int main(int argc, char **argv) {
 				}
 			}
 			resultado = com.ler((char*)&aq, sizeof(aq));
+			//se a leitura de 'Q' correr bem queda detectada
 						if ((resultado == EXIT_SUCCESS) && (aq == 'Q')) {
-							//se a leitura de 'Q' correr bem
-							//queda detectada
-							resultado = com.ler((char*)&altitude, sizeof(altitude));
-							if (resultado == EXIT_SUCCESS) {
+							cout << "Q= " << deteccaoQueda << endl;
+							//resultado = com.ler((char*)&altitude, sizeof(altitude));
+							//if (resultado == EXIT_SUCCESS) {
 								//se a leitura da altitude correr bem
-								resultado = com.ler((char*)&at, sizeof(at));
+							//	resultado = com.ler((char*)&at, sizeof(at));
 
-								if (resultado == EXIT_SUCCESS && (at == 'Q')) {
-									cout << "Q= " << deteccaoQueda << endl;
-								}
-							}
+							//	if (resultado == EXIT_SUCCESS && (at == 'Q')) {
+							//		cout << "Q= " << deteccaoQueda << endl;
+							//	}
+							//}
 			}
-			Sleep(500);
+			Sleep(50);
 		}
 	};
 
