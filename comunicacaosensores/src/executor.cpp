@@ -12,6 +12,11 @@
 
 using namespace std;
 
+struct Dado{
+	float altitude;
+	int queda;//0-Normal | 1-Queda
+}
+
 int main(int argc, char **argv) {
 
 	//criar uma instancia da classe de comunicação
@@ -24,33 +29,29 @@ int main(int argc, char **argv) {
 
 	//iniciei a comunicacao testando para sucesso
 	if (com.iniciar() == EXIT_SUCCESS) {
-		char ai, at, aq;
+		char ai, at;
 
-		float altitude;
+		Dado dados;
 		//enquanto estiver executando
 		while (true) {
 			//realizar a leitura do caracter "I" (Inicial)
 			int resultado;
 
-			resultado = com.ler((char*) &ai, sizeof(ai));
+			resultado = com.ler((char*)&ai, sizeof(ai));
 			if ((resultado == EXIT_SUCCESS) && (ai == 'A')) {
 				//se a leitura de 'A' correr bem
 				//ler a altitude
-				resultado = com.ler((char*) &altitude, sizeof(altitude));
+				resultado = com.ler((char*) &dados, sizeof(dados));
 				if (resultado == EXIT_SUCCESS) {
 					//se a leitura da altitude correr bem
 					resultado = com.ler((char*) &at, sizeof(at));
 					if (resultado == EXIT_SUCCESS && (at == 'T')) {
-						cout << "A=" << altitude << endl;
+						cout << "A=" << dados.altitude << endl;
+						cout << "Q=" << dados.queda << endl;
 					}
 				}
 			}
 
-			resultado = com.ler((char*) &aq, sizeof(aq));
-			//se a leitura de 'Q' correr bem queda detectada
-			if ((resultado == EXIT_SUCCESS) && (aq == 'Q')) {
-				cout << "Q" << endl;
-			}
 			Sleep(50);//estava 500
 		}
 	};

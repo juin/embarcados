@@ -5,8 +5,13 @@
 
 ADXL345 acel = ADXL345();
 Adafruit_BMP085 bmp;
-float altitude;
 
+struct Dado{
+  float altitude;
+  int queda;  
+  };
+
+Dado dados; 
 void setup() {
   Serial.begin(9600);
   acel.powerOn();
@@ -24,14 +29,12 @@ void setup() {
    acel.setFreeFallDuration(10); // //(20 - 70) 
 }
 
-
-
-void enviarAltitude(){
+void enviarDados(){
   
-  int tam = sizeof(altitude);
+  int tam = sizeof(dados);
   char buff[tam];
 
-  memcpy(&buff, &altitude, tam);
+  memcpy(&buff, &dados, tam);
 
   Serial.write("A");
   Serial.write((uint8_t*)&buff, tam);
@@ -48,16 +51,15 @@ void checkSetup()
 
 void loop() {
   
-  altitude = bmp.readAltitude();
-  enviarAltitude();
+  dados.altitude = bmp.readAltitude();
+  dados.queda = 0;
   
   //Leitura interrompe fonte e procurar ações desencadeadas
   byte interrupts = acel.getInterruptSource();
   if(acel.triggered(interrupts, ADXL345_FREE_FALL)){
-    Serial.println("Queda Detectada");
-    Serial.write('Q');
+    dados.queda = 1;
   }
 
-Serial.println("");
+  enviarDados();
   delay(50);
 }
