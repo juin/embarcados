@@ -6,6 +6,7 @@ public interface IComunicacaoSensores extends Library{
 	
 	public int iniciar (String porta);
 	public int ler();
+	public char getQueda();
 	public float getAltitude();
 	public int finalizar();
 	

@@ -7,8 +7,10 @@ public class Executor {
 
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
+		//AsincExec asinc = 
+		//		new AsincExec("/dev/ttyACM0");
 		AsincExec asinc = 
-				new AsincExec("/dev/ttyACM0");
+				new AsincExec("COM6");
 		//vamos colocar ao menos um escutador
 		//tem que colocar o listener dentro do asinc para ele usar
 		ListenerAcelerometro listener = 
