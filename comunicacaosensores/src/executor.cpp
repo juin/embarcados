@@ -12,10 +12,10 @@
 
 using namespace std;
 
-struct Eixo {
-	short acelX, acelY, acelZ;
+//struct Eixo {
+//	short acelX, acelY, acelZ;
 	//int giroX, giroY, giroZ;
-};
+//};
 
 int main(int argc, char **argv) {
 

@@ -55,7 +55,7 @@ int ler() {
 };
 
 
-int getAltitude(){
+float getAltitude(){
 	return altitude;
 };
 

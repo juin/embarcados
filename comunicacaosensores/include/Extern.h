@@ -14,7 +14,7 @@ extern "C" {
 
 int iniciar(char* porta);
 int ler();
-int getAltitude();
+float getAltitude();
 char getQueda();
 int finalizar();
 
