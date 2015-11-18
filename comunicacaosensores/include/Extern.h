@@ -15,7 +15,7 @@ extern "C" {
 int iniciar(char* porta);
 int ler();
 float getAltitude();
-char getQueda();
+int getQueda();
 int finalizar();
 
 #ifdef __cpluplus
