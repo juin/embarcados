@@ -5,12 +5,6 @@
 
 ADXL345 acel = ADXL345();
 Adafruit_BMP085 bmp;
-
-struct Eixo{
-  int acelX, acelY, acelZ;
-};
-
-Eixo eixos;
 float altitude;
 
 void setup() {
@@ -26,20 +20,11 @@ void setup() {
 
 
   //Limite da queda e duração
-   acel.setFreeFallThreshold(7);// //(5 - 9) recommended - 62.5mg per increment
-   acel.setFreeFallDuration(20); // //(20 - 70) recommended - 5ms per increment
+   acel.setFreeFallThreshold(7);// //(5 - 9)
+   acel.setFreeFallDuration(5); // //(20 - 70) 
 }
 
-void enviarEixos(){
-  int tam = sizeof(eixos);
-  char buff[tam];
-  
-  memcpy(&buff, &eixos, tam);
 
-  Serial.write('I');
-  Serial.write((uint8_t*)&buff, tam);
-  Serial.write('F');
-}
 
 void enviarAltitude(){
   
@@ -62,11 +47,9 @@ void checkSetup()
 }
 
 void loop() {
-  acel.readAccel(&eixos.acelX,&eixos.acelY,&eixos.acelZ);
-
   altitude = bmp.readAltitude();
-  checkSetup();
-  enviarEixos();
+ // checkSetup();
+ 
   enviarAltitude();
   
   
@@ -75,9 +58,10 @@ void loop() {
   if(acel.triggered(interrupts, ADXL345_FREE_FALL)){
     Serial.println("FreeFall - Queda detectada");
     // adicionar código aqui para fazer algo quando a queda livre for detectada
+    Serial.write("Q");
     
   }
  
 
-  delay(2000);
+  delay(50);
 }
