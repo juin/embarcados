@@ -60,7 +60,7 @@ public class AsincExec implements Runnable {
 
 				if(queda == 'Q'){
 					fim = conector.getAltitude();
-					Log.info("Fim: "+ fim);
+					Log.info("Queda, Altiditude Inicial: " + inicio + " Altitude Final: "+ fim);
 					notificar(inicio, fim);
 				}
 			}
