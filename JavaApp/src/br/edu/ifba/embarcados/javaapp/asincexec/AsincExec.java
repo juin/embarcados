@@ -1,13 +1,16 @@
 package br.edu.ifba.embarcados.javaapp.asincexec;
 
 import java.util.ArrayList;
+import org.apache.log4j.Logger;
 import java.util.List;
 
 import br.edu.ifba.embarcados.javaapp.conector.FabricaConectores;
 import br.edu.ifba.embarcados.javaapp.conector.IComunicacaoSensores;
+import test.pack.Log4j;
 
 public class AsincExec implements Runnable {
-
+	
+	private static final Logger Log = Logger.getLogger(Log4j.class);
 	private String porta;
 	private boolean continuar; 
 	private float inicio;
@@ -44,6 +47,8 @@ public class AsincExec implements Runnable {
 				
 				if(queda == 'N'){
 					inicio = conector.getAltitude();
+					Log.info("Inicio: "+ inicio);
+					
 				}
 				
 				try {
@@ -55,6 +60,7 @@ public class AsincExec implements Runnable {
 
 				if(queda == 'Q'){
 					fim = conector.getAltitude();
+					Log.info("Fim: "+ fim);
 					notificar(inicio, fim);
 				}
 			}
