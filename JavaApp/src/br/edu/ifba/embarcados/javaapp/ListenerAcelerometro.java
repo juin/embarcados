@@ -4,7 +4,7 @@ import br.edu.ifba.embarcados.javaapp.asincexec.IListenerAcelerometro;
 
 public class ListenerAcelerometro implements IListenerAcelerometro{
 
-	public void notificarDados(float altitude, int queda){
+	public void notificarDados(float altitude, char queda){
 		System.out.println("Altitude: "+altitude);
 		System.out.println("Queda: "+queda);
 	}
@@ -14,8 +14,8 @@ public class ListenerAcelerometro implements IListenerAcelerometro{
 	}
 	
 	//Se houver queda, retorna verdadeiro
-	public void notificarQueda(int queda){
-		if(queda == 1){
+	public void notificarQueda(char queda){
+		if(queda == 'Q'){
 			System.out.println("Queda = "+ queda);
 			
 		}

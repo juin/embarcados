@@ -14,7 +14,7 @@ using namespace std;
 
 struct Dado{
 	float altitude;
-	int queda;//0-Normal | 1-Queda
+	char queda;//0-Normal | 1-Queda
 };
 
 int main(int argc, char **argv) {

@@ -8,7 +8,7 @@ Adafruit_BMP085 bmp;
 
 struct Dado{
   float altitude;
-  int queda;  
+  char queda;  
   };
 
 Dado dados; 
@@ -52,12 +52,12 @@ void checkSetup()
 void loop() {
   
   dados.altitude = bmp.readAltitude();
-  dados.queda = 0;
+  dados.queda = 'N';
   
   //Leitura interrompe fonte e procurar ações desencadeadas
   byte interrupts = acel.getInterruptSource();
   if(acel.triggered(interrupts, ADXL345_FREE_FALL)){
-    dados.queda = 1;
+    dados.queda = 'Q';
   }
 
   enviarDados();

@@ -12,7 +12,7 @@
 
 struct Dado{
 	float altitude;
-	int queda;//0-Normal | 1-Queda
+	char queda;//0-Normal | 1-Queda
 };
 
 Dado dados;
@@ -50,7 +50,7 @@ float getAltitude(){
 	return dados.altitude;
 };
 
-int getQueda(){
+char getQueda(){
 	return dados.queda;
 };
 
