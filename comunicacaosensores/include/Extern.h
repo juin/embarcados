@@ -8,7 +8,7 @@
 #ifndef EXTERN_H_
 #define EXTERN_H_
 
-#ifdef __cpluplus
+#ifdef __cplusplus
 extern "C" {
 #endif
 
@@ -18,7 +18,7 @@ float getAltitude();
 int getQueda();
 int finalizar();
 
-#ifdef __cpluplus
+#ifdef __cplusplus
 }
 #endif
 #endif /* EXTERN_H_ */

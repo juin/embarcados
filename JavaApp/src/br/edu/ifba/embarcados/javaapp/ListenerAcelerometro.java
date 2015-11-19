@@ -13,7 +13,7 @@ public class ListenerAcelerometro implements IListenerAcelerometro{
 		
 		int resultado = 0;
 		
-		if(queda == 'Q'){
+		if(queda == 1){
 			resultado = 1;
 			System.out.println("Queda = "+ queda);
 			
