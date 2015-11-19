@@ -21,4 +21,11 @@ public class ListenerAcelerometro implements IListenerAcelerometro{
 		}
 	}
 
+	@Override
+	public void guardarLog(float inicio, float fim) {
+		System.out.println("Inicial: "+inicio);
+		System.out.println("Final: "+fim);
+		
+	}
+
 }

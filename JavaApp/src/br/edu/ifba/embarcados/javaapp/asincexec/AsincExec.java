@@ -10,7 +10,8 @@ public class AsincExec implements Runnable {
 
 	private String porta;
 	private boolean continuar; 
-	
+	private float inicio;
+	private float fim;
 	private List<IListenerAcelerometro> listeners;
 	
 	public AsincExec(String porta){
@@ -37,13 +38,24 @@ public class AsincExec implements Runnable {
 			while (continuar){
 				conector.ler();
 				
-				notificar(conector.getAltitude(), conector.getQueda());
+				//notificar(conector.getAltitude(), conector.getQueda());
+
+				char queda = conector.getQueda();
+				
+				if(queda == 'N'){
+					inicio = conector.getAltitude();
+				}
 				
 				try {
-					Thread.sleep(100);
+					Thread.sleep(50);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+				}
+
+				if(queda == 'Q'){
+					fim = conector.getAltitude();
+					notificar(inicio, fim);
 				}
 			}
 			
@@ -52,10 +64,10 @@ public class AsincExec implements Runnable {
 		
 	}
 	
-	private void notificar(float altitude, char queda){
+	private void notificar(float inicio, float fim){
 		//notificar todos de vez
 		for (IListenerAcelerometro listener: listeners) {
-			listener.notificarDados(altitude, queda);
+			listener.guardarLog(inicio,fim);
 		}
 		
 	}

@@ -26,7 +26,7 @@ void setup() {
 
   //Limite da queda e duração
    acel.setFreeFallThreshold(7);// //(5 - 9)
-   acel.setFreeFallDuration(10); // //(20 - 70) 
+   acel.setFreeFallDuration(5); // //(20 - 70) 
 }
 
 void enviarDados(){
@@ -58,8 +58,9 @@ void loop() {
   byte interrupts = acel.getInterruptSource();
   if(acel.triggered(interrupts, ADXL345_FREE_FALL)){
     dados.queda = 'Q';
+    Serial.println("queda");
   }
 
   enviarDados();
-  delay(50);
+  delay(100);
 }
