@@ -6,6 +6,7 @@ JavaApp/comunicacaosensores.dll
 JavaApp/lib/
 JavaApp/.classpath
 JavaApp/.project
+JavaApp/log/
 
 #Arquivos/Diretorios C++
 comunicacaosensores/.settings/
