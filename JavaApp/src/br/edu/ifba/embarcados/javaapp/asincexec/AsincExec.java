@@ -37,9 +37,7 @@ public class AsincExec implements Runnable {
 			while (continuar){
 				conector.ler();
 				
-				
 				notificar(conector.getAltitude(), conector.getQueda());
-						
 				
 				try {
 					Thread.sleep(100);
@@ -57,8 +55,7 @@ public class AsincExec implements Runnable {
 	private void notificar(float altitude, int queda){
 		//notificar todos de vez
 		for (IListenerAcelerometro listener: listeners) {
-			listener.notificarAltitude(altitude);
-			listener.notificarQueda(queda);			
+			listener.notificarDados(altitude, queda);
 		}
 		
 	}

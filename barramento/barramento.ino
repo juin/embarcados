@@ -58,8 +58,6 @@ void loop() {
   byte interrupts = acel.getInterruptSource();
   if(acel.triggered(interrupts, ADXL345_FREE_FALL)){
     dados.queda = 1;
-    Serial.print("Queda");
-    Serial.println(dados.queda);
   }
 
   enviarDados();
