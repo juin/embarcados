@@ -9,17 +9,17 @@ public class ListenerAcelerometro implements IListenerAcelerometro{
 	}
 	
 	//Se houver queda, retorna verdadeiro
-	public void notificarQueda(char queda){
+	public int notificarQueda(int queda){
 		
-		//boolean resultado = false;
+		int resultado = 0;
 		
 		if(queda == 'Q'){
-			//resultado = true;
+			resultado = 1;
 			System.out.println("Queda = "+ queda);
 			
 		}
 		
-		//return resultado;
+		return resultado;
 	}
 
 }

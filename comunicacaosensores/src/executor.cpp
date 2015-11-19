@@ -15,7 +15,7 @@ using namespace std;
 struct Dado{
 	float altitude;
 	int queda;//0-Normal | 1-Queda
-}
+};
 
 int main(int argc, char **argv) {
 
@@ -34,7 +34,7 @@ int main(int argc, char **argv) {
 		Dado dados;
 		//enquanto estiver executando
 		while (true) {
-			//realizar a leitura do caracter "I" (Inicial)
+			//realizar a leitura do caracter "A" (Inicial)
 			int resultado;
 
 			resultado = com.ler((char*)&ai, sizeof(ai));
