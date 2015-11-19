@@ -7,12 +7,12 @@ public class FabricaConectores {
 	
 	public static IComunicacaoSensores getConector(){
 		IComunicacaoSensores conector = null;
-		//jna vai utilizar load library é quem vai pegar os métodos que foram def na interface
-		//como a aplicação vai selecionar o sistema, isso garante que vai ser multiplataforma
+		//jna vai utilizar load library ï¿½ quem vai pegar os mï¿½todos que foram def na interface
+		//como a aplicaï¿½ï¿½o vai selecionar o sistema, isso garante que vai ser multiplataforma
 		if (Platform.isWindows()){
-			//utiliza os métodos da biblioteca passando para a interface
-			conector =(IComunicacaoSensores) Native.loadLibrary("C:\\WorkSpaceJava\\JavaApp\\comunicacaosensores.dll", IComunicacaoSensores.class);
-			
+			//utiliza os mï¿½todos da biblioteca passando para a interface
+			conector =(IComunicacaoSensores) Native.loadLibrary("E:\\projetos\\embarcados\\JavaApp\\comunicacaosensores.dll", IComunicacaoSensores.class);
+			//C:\\WorkSpaceJava\\JavaApp\\comunicacaosensores.dll
 		}else if (Platform.isLinux()){
 			conector =(IComunicacaoSensores) Native.loadLibrary("comunicacaosensores.so", IComunicacaoSensores.class);
 		}
